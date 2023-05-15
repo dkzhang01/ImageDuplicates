@@ -1,0 +1,3 @@
+This code finds dupilcates images in a given folder. It then moves the images with duplicates into a newly created folder name duplicates and then creates sub folders for each kind of photo.
+
+Working on a web interface to make it more user friendly.
