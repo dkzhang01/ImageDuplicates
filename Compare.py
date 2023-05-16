@@ -33,7 +33,6 @@ def find_duplicates(folder_path):
         fp1 = file_list[i]
         j = i + 1
         while (j < len(file_list)):
-            #print(i)
             fp2 = file_list[j]
             if (compare(folder_path, fp1, fp2)):
                 if (len(dup_element) == 0):
@@ -52,7 +51,7 @@ def find_duplicates(folder_path):
         i += 1
     return dups
 
-def move_duplicates(folder_path, dups):
+def create_folders(folder_path, dups):
     # moves the file names in 2d list to another folder with subfolders for each element
     errfn = []
     if (len(dups) != 0):
@@ -85,13 +84,16 @@ def move_duplicates(folder_path, dups):
                     pass
     return errfn
 
-
-if __name__ == "__main__":
-    folder = "./img/2020"
-    dups = find_duplicates(folder)
-    errfn = move_duplicates(folder, dups)
+def move_duplicates(folder_path):
+    # Takes path to folder and moves all duplicates into their own folder. Doesn't touch the unique images.
+    dups = find_duplicates(folder_path)
+    errfn = create_folders(folder_path, dups)
     if (len(errfn) != 0):
         print("Could not move these files:")
         print(errfn)
     else:
         print("successfully moved duplicates")
+
+
+if __name__ == "__main__":
+    move_duplicates("./img/Test")
